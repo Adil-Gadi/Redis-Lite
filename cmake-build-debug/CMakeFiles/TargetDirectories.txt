@@ -1,0 +1,3 @@
+/Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug/CMakeFiles/Redis_Lite.dir
+/Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug/CMakeFiles/rebuild_cache.dir
