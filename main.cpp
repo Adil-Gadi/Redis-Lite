@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <print>
+#include <sstream>
 #define LOG(x) std::cout << x << std::endl
 
 constexpr static int MAX = 100;
@@ -10,6 +11,7 @@ typedef struct {
     int size = INIT_SIZE;
     int amount = 0;
     char **ptr = nullptr;
+    int empty = 0;
 } HashArray;
 
 HashArray map[MAX];
@@ -40,6 +42,10 @@ const char *get_item(const char *key) {
     const int amount = item->amount;
     char** src = item->ptr;
 
+    if (src == nullptr) {
+        return nullptr;
+    }
+
     for (int i = 0; i < amount; i++) {
 
         if (src[i] == nullptr) {
@@ -52,7 +58,7 @@ const char *get_item(const char *key) {
         }
 
         if (strncmp(src[i], key, strlen(key)) == 0) {
-            const char* val = src[i] + strlen(key);
+            const char* val = src[i] + sizeof(key);
             return val;
         }
     }
@@ -63,7 +69,7 @@ const char *get_item(const char *key) {
 bool delete_item(const char* key) {
     const int index = hash(key);
 
-    const HashArray *item = &map[index];
+    HashArray *item = &map[index];
     const int amount = item->amount;
     char** src = item->ptr;
 
@@ -82,6 +88,7 @@ bool delete_item(const char* key) {
         if (strncmp(src[i], key, strlen(key)) == 0) {
             free(src[i]);
             src[i] = nullptr;
+            item->empty++;
             return true;
         }
     }
@@ -95,8 +102,22 @@ bool add_item(const char *key, const char *value) {
     HashArray *item = &map[index];
     const int amount = item->amount;
 
+    int location = amount;
     if (amount == item->size) {
+        if (item->empty > 0) {
+            for (int i = 0; i < amount; i++) {
+                if (item->ptr[i] == nullptr) {
+                    location = i;
+                    item->empty--;
+                    break;
+                }
+            }
+        }
+
         //realloc
+        size_t new_size = sizeof(item->ptr) * item->size * 2;
+        item->ptr = (char**)realloc((char**)item->ptr, new_size);
+        item->size = new_size;
     }
 
     const char* found = get_item(key);
@@ -105,51 +126,86 @@ bool add_item(const char *key, const char *value) {
         delete_item(key);
     }
 
-    char** src = &map[index].ptr[amount];
+    char** src = &map[index].ptr[location];
 
-    *src = (char *) malloc(sizeof(value) + sizeof(key));
+    *src = (char *) malloc(strlen(value) + 1 + strlen(key) + 1);
     strcpy(*src, key);
-    strcat(*src, value);
 
+    // strcat(*src, value);
+    char* sub = src[0] + sizeof(key);
+
+    strcpy(sub, value);
     item->amount++;
+    return true;
 }
 
 bool flush() {
     for (int i = 0; i < MAX; i++) {
-        char** src = map[i].ptr;
+        // map[i].amount = 0;
+        // map[i].ptr = nullptr;
+        // map[i].size = INIT_SIZE;
+        HashArray* array = &map[i];
+        char** src = array->ptr;
         for (int j = 0; j < map[i].amount; j++) {
             if (src[j] == nullptr) continue;
             free(src[j]);
             src[j] = nullptr;
-            LOG("yes");
         }
+
+        free(src);
+        src = nullptr;
+        array->amount = 0;
+        array->size = 0;
     }
 
     return true;
 }
 
+void extract_params(const std::string& input) {
+
+    int keyStart;
+    int keyEnd;
+
+    int valStart;
+    int valEnd;
+
+    for (int i = 0; i < input.length(); i++) {
+        LOG(input.at(i));
+        if (input.at(i) == '"') {
+            std::println("{} {}", i, input.at(i));
+        }
+    }
+}
+
 int main() {
     init_map();
 
-    const char *key1 = "Sample";
-    const char *key2 = "True";
-    const char *key3 = "False";
-    add_item(key1, "hello");
-    add_item(key1, "bye");
+    while (true) {
+        std::string input;
+        std::getline(std::cin, input);
 
-    // LOG(get_item(key1));
+       // LOG(input);
 
-    // LOG(delete_item(key1));
-    // LOG(delete_item(key1));
+        std::stringstream ss(input);
+
+        extract_params(input);
+        if (input.starts_with("ADD")) {
+        }
+
+        if (input.starts_with("GET")) {
+
+        }
+
+        if (input.starts_with("DELETE") || input.starts_with("REMOVE")) {
+
+        }
+
+        if (input.starts_with("EXIT")) {
+            break;
+        }
+    }
 
     flush();
-    // init_map();
-    auto m = map[66].ptr[1];
-    if (m == nullptr) {
-        LOG(1);
-    }
-    LOG(get_item(key1));
-
 
     return 0;
 }
