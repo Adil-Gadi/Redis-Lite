@@ -4,7 +4,7 @@
 #include <sstream>
 #define LOG(x) std::cout << x << std::endl
 
-constexpr static int MAX = 100;
+constexpr static int MAX = 1000;
 constexpr static int INIT_SIZE = 5;
 
 typedef struct {
@@ -40,14 +40,13 @@ const char *get_item(const char *key) {
 
     const HashArray *item = &map[index];
     const int amount = item->amount;
-    char** src = item->ptr;
+    char **src = item->ptr;
 
     if (src == nullptr) {
         return nullptr;
     }
 
     for (int i = 0; i < amount; i++) {
-
         if (src[i] == nullptr) {
             continue;
         }
@@ -58,7 +57,7 @@ const char *get_item(const char *key) {
         }
 
         if (strncmp(src[i], key, strlen(key)) == 0) {
-            const char* val = src[i] + sizeof(key);
+            const char *val = src[i] + strlen(key) + 1;
             return val;
         }
     }
@@ -66,15 +65,14 @@ const char *get_item(const char *key) {
     return nullptr;
 }
 
-bool delete_item(const char* key) {
+bool delete_item(const char *key) {
     const int index = hash(key);
 
     HashArray *item = &map[index];
     const int amount = item->amount;
-    char** src = item->ptr;
+    char **src = item->ptr;
 
     for (int i = 0; i < amount; i++) {
-
         if (src[i] == nullptr) {
             continue;
         }
@@ -116,25 +114,26 @@ bool add_item(const char *key, const char *value) {
 
         //realloc
         size_t new_size = sizeof(item->ptr) * item->size * 2;
-        item->ptr = (char**)realloc((char**)item->ptr, new_size);
+        item->ptr = (char **) realloc((char **) item->ptr, new_size);
         item->size = new_size;
     }
 
-    const char* found = get_item(key);
+    const char *found = get_item(key);
 
     if (found != nullptr) {
         delete_item(key);
     }
 
-    char** src = &map[index].ptr[location];
+    char **src = &map[index].ptr[location];
 
     *src = (char *) malloc(strlen(value) + 1 + strlen(key) + 1);
     strcpy(*src, key);
 
     // strcat(*src, value);
-    char* sub = src[0] + sizeof(key);
+    char *sub = src[0] + strlen(key) + 1;
 
     strcpy(sub, value);
+
     item->amount++;
     return true;
 }
@@ -144,8 +143,8 @@ bool flush() {
         // map[i].amount = 0;
         // map[i].ptr = nullptr;
         // map[i].size = INIT_SIZE;
-        HashArray* array = &map[i];
-        char** src = array->ptr;
+        HashArray *array = &map[i];
+        char **src = array->ptr;
         for (int j = 0; j < map[i].amount; j++) {
             if (src[j] == nullptr) continue;
             free(src[j]);
@@ -161,8 +160,7 @@ bool flush() {
     return true;
 }
 
-void extract_params(const std::string& input, int result[3]) {
-
+void extract_params(const std::string &input, int result[3]) {
     int keyStart = -1;
     int keyEnd = -1;
     int spacesIn = 0;
@@ -216,9 +214,11 @@ int main() {
         }
         std::string key = input.substr(result[0], result[1] - result[0] + 1);
         std::string value = result[2] == -1 ? "" : input.substr(result[2]);
+        // std::println("{} = {}", key, value);
         if (input.starts_with("ADD")) {
             const bool success = add_item(key.c_str(), value.c_str());
 
+            LOG(hash(key.c_str()));
             if (!success) {
                 LOG("Error: unsuccessful at adding item");
                 continue;
@@ -232,7 +232,7 @@ int main() {
         }
 
         if (input.starts_with("GET")) {
-            const char* value = get_item(key.c_str());
+            const char *value = get_item(key.c_str());
 
             if (value == nullptr) {
                 LOG("Error: unable to find value with specified key");
@@ -251,7 +251,6 @@ int main() {
                 continue;
             }
         }
-
     }
 
     flush();
