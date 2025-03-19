@@ -7,7 +7,7 @@
 constexpr static int MAX = 1000;
 constexpr static int INIT_SIZE = 5;
 
-typedef struct {
+typedef struct HashArray {
     int size = INIT_SIZE;
     int amount = 0;
     char **ptr = nullptr;
@@ -118,9 +118,11 @@ bool add_item(const char *key, const char *value) {
         item->size = new_size;
     }
 
+    // TODO: integrate into add fn
     const char *found = get_item(key);
 
     if (found != nullptr) {
+        // TODO: integrate into add fn
         delete_item(key);
     }
 
@@ -218,7 +220,6 @@ int main() {
         if (input.starts_with("ADD")) {
             const bool success = add_item(key.c_str(), value.c_str());
 
-            LOG(hash(key.c_str()));
             if (!success) {
                 LOG("Error: unsuccessful at adding item");
                 continue;
