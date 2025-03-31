@@ -47,11 +47,19 @@ cmake_ninja_workdir = /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/cmake-bu
 #############################################
 # Order-only phony target for Redis_Lite
 
-build cmake_object_order_depends_target_Redis_Lite: phony || .
+build cmake_object_order_depends_target_Redis_Lite: phony || cmake_object_order_depends_target_gtest cmake_object_order_depends_target_gtest_main
 
 build CMakeFiles/Redis_Lite.dir/main.cpp.o: CXX_COMPILER__Redis_Lite_unscanned_Debug /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/main.cpp || cmake_object_order_depends_target_Redis_Lite
   DEP_FILE = CMakeFiles/Redis_Lite.dir/main.cpp.o.d
   FLAGS = -g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
+  INCLUDES = -I"/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googlemock/include" -isystem "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googletest/include" -isystem "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googletest"
+  OBJECT_DIR = CMakeFiles/Redis_Lite.dir
+  OBJECT_FILE_DIR = CMakeFiles/Redis_Lite.dir
+
+build CMakeFiles/Redis_Lite.dir/HashMap.cpp.o: CXX_COMPILER__Redis_Lite_unscanned_Debug /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/HashMap.cpp || cmake_object_order_depends_target_Redis_Lite
+  DEP_FILE = CMakeFiles/Redis_Lite.dir/HashMap.cpp.o.d
+  FLAGS = -g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
+  INCLUDES = -I"/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googlemock/include" -isystem "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googletest/include" -isystem "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googletest"
   OBJECT_DIR = CMakeFiles/Redis_Lite.dir
   OBJECT_FILE_DIR = CMakeFiles/Redis_Lite.dir
 
@@ -63,13 +71,61 @@ build CMakeFiles/Redis_Lite.dir/main.cpp.o: CXX_COMPILER__Redis_Lite_unscanned_D
 #############################################
 # Link the executable Redis_Lite
 
-build Redis_Lite: CXX_EXECUTABLE_LINKER__Redis_Lite_Debug CMakeFiles/Redis_Lite.dir/main.cpp.o
+build Redis_Lite: CXX_EXECUTABLE_LINKER__Redis_Lite_Debug CMakeFiles/Redis_Lite.dir/main.cpp.o CMakeFiles/Redis_Lite.dir/HashMap.cpp.o | lib/libgtest_main.a lib/libgtest.a || lib/libgtest.a lib/libgtest_main.a
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk
+  LINK_LIBRARIES = lib/libgtest_main.a  lib/libgtest.a
   OBJECT_DIR = CMakeFiles/Redis_Lite.dir
   POST_BUILD = :
   PRE_LINK = :
   TARGET_FILE = Redis_Lite
   TARGET_PDB = Redis_Lite.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target run_tests
+
+
+#############################################
+# Order-only phony target for run_tests
+
+build cmake_object_order_depends_target_run_tests: phony || cmake_object_order_depends_target_gtest cmake_object_order_depends_target_gtest_main
+
+build CMakeFiles/run_tests.dir/tests/test_runner.cpp.o: CXX_COMPILER__run_tests_unscanned_Debug /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/tests/test_runner.cpp || cmake_object_order_depends_target_run_tests
+  DEP_FILE = CMakeFiles/run_tests.dir/tests/test_runner.cpp.o.d
+  FLAGS = -g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
+  INCLUDES = -I"/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googlemock/include" -isystem "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googletest/include" -isystem "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googletest"
+  OBJECT_DIR = CMakeFiles/run_tests.dir
+  OBJECT_FILE_DIR = CMakeFiles/run_tests.dir/tests
+
+build CMakeFiles/run_tests.dir/tests/sample_test.cpp.o: CXX_COMPILER__run_tests_unscanned_Debug /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/tests/sample_test.cpp || cmake_object_order_depends_target_run_tests
+  DEP_FILE = CMakeFiles/run_tests.dir/tests/sample_test.cpp.o.d
+  FLAGS = -g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
+  INCLUDES = -I"/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googlemock/include" -isystem "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googletest/include" -isystem "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googletest"
+  OBJECT_DIR = CMakeFiles/run_tests.dir
+  OBJECT_FILE_DIR = CMakeFiles/run_tests.dir/tests
+
+build CMakeFiles/run_tests.dir/HashMap.cpp.o: CXX_COMPILER__run_tests_unscanned_Debug /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/HashMap.cpp || cmake_object_order_depends_target_run_tests
+  DEP_FILE = CMakeFiles/run_tests.dir/HashMap.cpp.o.d
+  FLAGS = -g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
+  INCLUDES = -I"/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googlemock/include" -isystem "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googletest/include" -isystem "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googletest"
+  OBJECT_DIR = CMakeFiles/run_tests.dir
+  OBJECT_FILE_DIR = CMakeFiles/run_tests.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target run_tests
+
+
+#############################################
+# Link the executable run_tests
+
+build run_tests: CXX_EXECUTABLE_LINKER__run_tests_Debug CMakeFiles/run_tests.dir/tests/test_runner.cpp.o CMakeFiles/run_tests.dir/tests/sample_test.cpp.o CMakeFiles/run_tests.dir/HashMap.cpp.o | lib/libgtest_main.a lib/libgtest.a || lib/libgtest.a lib/libgtest_main.a
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk
+  LINK_LIBRARIES = lib/libgtest_main.a  lib/libgtest.a
+  OBJECT_DIR = CMakeFiles/run_tests.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = run_tests
+  TARGET_PDB = run_tests.dbg
 
 
 #############################################
@@ -94,8 +150,408 @@ build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 
 build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
+
+#############################################
+# Utility command for list_install_components
+
+build list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build CMakeFiles/install.util: CUSTOM_COMMAND all
+  COMMAND = cd "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug" && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build install: phony CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build CMakeFiles/install/local.util: CUSTOM_COMMAND all
+  COMMAND = cd "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug" && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build install/local: phony CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build CMakeFiles/install/strip.util: CUSTOM_COMMAND all
+  COMMAND = cd "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug" && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build install/strip: phony CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /Users/adilgadi/Desktop/CPP Projects/Redis Lite/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for edit_cache
+
+build external/googletest/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug/external/googletest" && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build external/googletest/edit_cache: phony external/googletest/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build external/googletest/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug/external/googletest" && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake --regenerate-during-build -S"/Users/adilgadi/Desktop/CPP Projects/Redis Lite" -B"/Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build external/googletest/rebuild_cache: phony external/googletest/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build external/googletest/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build external/googletest/CMakeFiles/install.util: CUSTOM_COMMAND external/googletest/all
+  COMMAND = cd "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug/external/googletest" && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build external/googletest/install: phony external/googletest/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build external/googletest/CMakeFiles/install/local.util: CUSTOM_COMMAND external/googletest/all
+  COMMAND = cd "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug/external/googletest" && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build external/googletest/install/local: phony external/googletest/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build external/googletest/CMakeFiles/install/strip.util: CUSTOM_COMMAND external/googletest/all
+  COMMAND = cd "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug/external/googletest" && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build external/googletest/install/strip: phony external/googletest/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gmock
+
+
+#############################################
+# Order-only phony target for gmock
+
+build cmake_object_order_depends_target_gmock: phony || cmake_object_order_depends_target_gtest
+
+build external/googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o: CXX_COMPILER__gmock_unscanned_Debug /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/external/googletest/googlemock/src/gmock-all.cc || cmake_object_order_depends_target_gmock
+  DEP_FILE = external/googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o.d
+  FLAGS = -g -std=c++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -fcolor-diagnostics  -DGTEST_HAS_PTHREAD=1
+  INCLUDES = -I"/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googlemock/include" -I"/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googlemock" -isystem "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googletest/include" -isystem "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googletest"
+  OBJECT_DIR = external/googletest/googlemock/CMakeFiles/gmock.dir
+  OBJECT_FILE_DIR = external/googletest/googlemock/CMakeFiles/gmock.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gmock
+
+
+#############################################
+# Link the static library lib/libgmock.a
+
+build lib/libgmock.a: CXX_STATIC_LIBRARY_LINKER__gmock_Debug external/googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o || lib/libgtest.a
+  ARCH_FLAGS = -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = external/googletest/googlemock/CMakeFiles/gmock.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/libgmock.a
+  TARGET_PDB = gmock.a.dbg
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gmock_main
+
+
+#############################################
+# Order-only phony target for gmock_main
+
+build cmake_object_order_depends_target_gmock_main: phony || cmake_object_order_depends_target_gmock cmake_object_order_depends_target_gtest
+
+build external/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: CXX_COMPILER__gmock_main_unscanned_Debug /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/external/googletest/googlemock/src/gmock_main.cc || cmake_object_order_depends_target_gmock_main
+  DEP_FILE = external/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o.d
+  FLAGS = -g -std=c++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -fcolor-diagnostics  -DGTEST_HAS_PTHREAD=1
+  INCLUDES = -isystem "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googlemock/include" -isystem "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googlemock" -isystem "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googletest/include" -isystem "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googletest"
+  OBJECT_DIR = external/googletest/googlemock/CMakeFiles/gmock_main.dir
+  OBJECT_FILE_DIR = external/googletest/googlemock/CMakeFiles/gmock_main.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gmock_main
+
+
+#############################################
+# Link the static library lib/libgmock_main.a
+
+build lib/libgmock_main.a: CXX_STATIC_LIBRARY_LINKER__gmock_main_Debug external/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o || lib/libgmock.a lib/libgtest.a
+  ARCH_FLAGS = -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = external/googletest/googlemock/CMakeFiles/gmock_main.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/libgmock_main.a
+  TARGET_PDB = gmock_main.a.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build external/googletest/googlemock/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug/external/googletest/googlemock" && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build external/googletest/googlemock/edit_cache: phony external/googletest/googlemock/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build external/googletest/googlemock/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug/external/googletest/googlemock" && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake --regenerate-during-build -S"/Users/adilgadi/Desktop/CPP Projects/Redis Lite" -B"/Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build external/googletest/googlemock/rebuild_cache: phony external/googletest/googlemock/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build external/googletest/googlemock/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build external/googletest/googlemock/CMakeFiles/install.util: CUSTOM_COMMAND external/googletest/googlemock/all
+  COMMAND = cd "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug/external/googletest/googlemock" && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build external/googletest/googlemock/install: phony external/googletest/googlemock/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build external/googletest/googlemock/CMakeFiles/install/local.util: CUSTOM_COMMAND external/googletest/googlemock/all
+  COMMAND = cd "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug/external/googletest/googlemock" && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build external/googletest/googlemock/install/local: phony external/googletest/googlemock/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build external/googletest/googlemock/CMakeFiles/install/strip.util: CUSTOM_COMMAND external/googletest/googlemock/all
+  COMMAND = cd "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug/external/googletest/googlemock" && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build external/googletest/googlemock/install/strip: phony external/googletest/googlemock/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googlemock/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gtest
+
+
+#############################################
+# Order-only phony target for gtest
+
+build cmake_object_order_depends_target_gtest: phony || .
+
+build external/googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o: CXX_COMPILER__gtest_unscanned_Debug /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/external/googletest/googletest/src/gtest-all.cc || cmake_object_order_depends_target_gtest
+  DEP_FILE = external/googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o.d
+  FLAGS = -g -std=c++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -fcolor-diagnostics  -DGTEST_HAS_PTHREAD=1
+  INCLUDES = -I"/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googletest/include" -I"/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googletest"
+  OBJECT_DIR = external/googletest/googletest/CMakeFiles/gtest.dir
+  OBJECT_FILE_DIR = external/googletest/googletest/CMakeFiles/gtest.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gtest
+
+
+#############################################
+# Link the static library lib/libgtest.a
+
+build lib/libgtest.a: CXX_STATIC_LIBRARY_LINKER__gtest_Debug external/googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+  ARCH_FLAGS = -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = external/googletest/googletest/CMakeFiles/gtest.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/libgtest.a
+  TARGET_PDB = gtest.a.dbg
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gtest_main
+
+
+#############################################
+# Order-only phony target for gtest_main
+
+build cmake_object_order_depends_target_gtest_main: phony || cmake_object_order_depends_target_gtest
+
+build external/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o: CXX_COMPILER__gtest_main_unscanned_Debug /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/external/googletest/googletest/src/gtest_main.cc || cmake_object_order_depends_target_gtest_main
+  DEP_FILE = external/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o.d
+  FLAGS = -g -std=c++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -fcolor-diagnostics  -DGTEST_HAS_PTHREAD=1
+  INCLUDES = -isystem "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googletest/include" -isystem "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googletest"
+  OBJECT_DIR = external/googletest/googletest/CMakeFiles/gtest_main.dir
+  OBJECT_FILE_DIR = external/googletest/googletest/CMakeFiles/gtest_main.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gtest_main
+
+
+#############################################
+# Link the static library lib/libgtest_main.a
+
+build lib/libgtest_main.a: CXX_STATIC_LIBRARY_LINKER__gtest_main_Debug external/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o || lib/libgtest.a
+  ARCH_FLAGS = -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = external/googletest/googletest/CMakeFiles/gtest_main.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/libgtest_main.a
+  TARGET_PDB = gtest_main.a.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build external/googletest/googletest/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug/external/googletest/googletest" && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build external/googletest/googletest/edit_cache: phony external/googletest/googletest/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build external/googletest/googletest/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug/external/googletest/googletest" && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake --regenerate-during-build -S"/Users/adilgadi/Desktop/CPP Projects/Redis Lite" -B"/Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build external/googletest/googletest/rebuild_cache: phony external/googletest/googletest/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build external/googletest/googletest/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build external/googletest/googletest/CMakeFiles/install.util: CUSTOM_COMMAND external/googletest/googletest/all
+  COMMAND = cd "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug/external/googletest/googletest" && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build external/googletest/googletest/install: phony external/googletest/googletest/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build external/googletest/googletest/CMakeFiles/install/local.util: CUSTOM_COMMAND external/googletest/googletest/all
+  COMMAND = cd "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug/external/googletest/googletest" && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build external/googletest/googletest/install/local: phony external/googletest/googletest/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build external/googletest/googletest/CMakeFiles/install/strip.util: CUSTOM_COMMAND external/googletest/googletest/all
+  COMMAND = cd "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug/external/googletest/googletest" && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build external/googletest/googletest/install/strip: phony external/googletest/googletest/CMakeFiles/install/strip.util
+
 # =============================================================================
 # Target aliases.
+
+build gmock: phony lib/libgmock.a
+
+build gmock_main: phony lib/libgmock_main.a
+
+build gtest: phony lib/libgtest.a
+
+build gtest_main: phony lib/libgtest_main.a
+
+build libgmock.a: phony lib/libgmock.a
+
+build libgmock_main.a: phony lib/libgmock_main.a
+
+build libgtest.a: phony lib/libgtest.a
+
+build libgtest_main.a: phony lib/libgtest_main.a
 
 # =============================================================================
 # Folder targets.
@@ -105,7 +561,28 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug
 
-build all: phony Redis_Lite
+build all: phony Redis_Lite run_tests external/googletest/all
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug/external/googletest
+
+build external/googletest/all: phony external/googletest/googlemock/all
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug/external/googletest/googlemock
+
+build external/googletest/googlemock/all: phony lib/libgmock.a lib/libgmock_main.a external/googletest/googletest/all
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/adilgadi/Desktop/CPP Projects/Redis Lite/cmake-build-debug/external/googletest/googletest
+
+build external/googletest/googletest/all: phony lib/libgtest.a lib/libgtest_main.a
 
 # =============================================================================
 # Built-in targets
@@ -114,14 +591,14 @@ build all: phony Redis_Lite
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/UnixPaths.cmake /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/CMakeLists.txt CMakeCache.txt CMakeFiles/3.30.5/CMakeCCompiler.cmake CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeDependentOption.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakePackageConfigHelpers.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CheckIncludeFile.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CheckLibraryExists.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/FindPackageMessage.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/FindThreads.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/GNUInstallDirs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/UnixPaths.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/WriteBasicConfigVersionFile.cmake /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/CMakeLists.txt /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/external/googletest/CMakeLists.txt /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/external/googletest/googlemock/CMakeLists.txt /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/external/googletest/googlemock/cmake/gmock.pc.in /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/external/googletest/googlemock/cmake/gmock_main.pc.in /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/external/googletest/googletest/CMakeLists.txt /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/external/googletest/googletest/cmake/Config.cmake.in /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/external/googletest/googletest/cmake/gtest.pc.in /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/external/googletest/googletest/cmake/gtest_main.pc.in /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/external/googletest/googletest/cmake/internal_utils.cmake CMakeCache.txt CMakeFiles/3.30.5/CMakeCCompiler.cmake CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/UnixPaths.cmake /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/CMakeLists.txt CMakeCache.txt CMakeFiles/3.30.5/CMakeCCompiler.cmake CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake: phony
+build /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeDependentOption.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakePackageConfigHelpers.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CheckIncludeFile.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/CheckLibraryExists.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/FindPackageMessage.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/FindThreads.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/GNUInstallDirs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/Platform/UnixPaths.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.30/Modules/WriteBasicConfigVersionFile.cmake /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/CMakeLists.txt /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/external/googletest/CMakeLists.txt /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/external/googletest/googlemock/CMakeLists.txt /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/external/googletest/googlemock/cmake/gmock.pc.in /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/external/googletest/googlemock/cmake/gmock_main.pc.in /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/external/googletest/googletest/CMakeLists.txt /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/external/googletest/googletest/cmake/Config.cmake.in /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/external/googletest/googletest/cmake/gtest.pc.in /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/external/googletest/googletest/cmake/gtest_main.pc.in /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/external/googletest/googletest/cmake/internal_utils.cmake CMakeCache.txt CMakeFiles/3.30.5/CMakeCCompiler.cmake CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake: phony
 
 
 #############################################

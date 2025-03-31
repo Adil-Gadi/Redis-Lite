@@ -1,7 +1,5 @@
 #include <iostream>
 #include <string>
-#include <print>
-#include <sstream>
 #define LOG(x) std::cout << x << std::endl
 
 constexpr static int MAX = 1000;
