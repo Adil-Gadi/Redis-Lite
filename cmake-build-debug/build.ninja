@@ -63,6 +63,13 @@ build CMakeFiles/Redis_Lite.dir/HashMap.cpp.o: CXX_COMPILER__Redis_Lite_unscanne
   OBJECT_DIR = CMakeFiles/Redis_Lite.dir
   OBJECT_FILE_DIR = CMakeFiles/Redis_Lite.dir
 
+build CMakeFiles/Redis_Lite.dir/Server.cpp.o: CXX_COMPILER__Redis_Lite_unscanned_Debug /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/Server.cpp || cmake_object_order_depends_target_Redis_Lite
+  DEP_FILE = CMakeFiles/Redis_Lite.dir/Server.cpp.o.d
+  FLAGS = -g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
+  INCLUDES = -I"/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googlemock/include" -isystem "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googletest/include" -isystem "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googletest"
+  OBJECT_DIR = CMakeFiles/Redis_Lite.dir
+  OBJECT_FILE_DIR = CMakeFiles/Redis_Lite.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Redis_Lite
@@ -71,7 +78,7 @@ build CMakeFiles/Redis_Lite.dir/HashMap.cpp.o: CXX_COMPILER__Redis_Lite_unscanne
 #############################################
 # Link the executable Redis_Lite
 
-build Redis_Lite: CXX_EXECUTABLE_LINKER__Redis_Lite_Debug CMakeFiles/Redis_Lite.dir/main.cpp.o CMakeFiles/Redis_Lite.dir/HashMap.cpp.o | lib/libgtest_main.a lib/libgtest.a || lib/libgtest.a lib/libgtest_main.a
+build Redis_Lite: CXX_EXECUTABLE_LINKER__Redis_Lite_Debug CMakeFiles/Redis_Lite.dir/main.cpp.o CMakeFiles/Redis_Lite.dir/HashMap.cpp.o CMakeFiles/Redis_Lite.dir/Server.cpp.o | lib/libgtest_main.a lib/libgtest.a || lib/libgtest.a lib/libgtest_main.a
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk
   LINK_LIBRARIES = lib/libgtest_main.a  lib/libgtest.a
   OBJECT_DIR = CMakeFiles/Redis_Lite.dir
@@ -96,8 +103,8 @@ build CMakeFiles/run_tests.dir/tests/test_runner.cpp.o: CXX_COMPILER__run_tests_
   OBJECT_DIR = CMakeFiles/run_tests.dir
   OBJECT_FILE_DIR = CMakeFiles/run_tests.dir/tests
 
-build CMakeFiles/run_tests.dir/tests/sample_test.cpp.o: CXX_COMPILER__run_tests_unscanned_Debug /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/tests/sample_test.cpp || cmake_object_order_depends_target_run_tests
-  DEP_FILE = CMakeFiles/run_tests.dir/tests/sample_test.cpp.o.d
+build CMakeFiles/run_tests.dir/tests/tests.cpp.o: CXX_COMPILER__run_tests_unscanned_Debug /Users/adilgadi/Desktop/CPP$ Projects/Redis$ Lite/tests/tests.cpp || cmake_object_order_depends_target_run_tests
+  DEP_FILE = CMakeFiles/run_tests.dir/tests/tests.cpp.o.d
   FLAGS = -g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
   INCLUDES = -I"/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googlemock/include" -isystem "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googletest/include" -isystem "/Users/adilgadi/Desktop/CPP Projects/Redis Lite/external/googletest/googletest"
   OBJECT_DIR = CMakeFiles/run_tests.dir
@@ -118,7 +125,7 @@ build CMakeFiles/run_tests.dir/HashMap.cpp.o: CXX_COMPILER__run_tests_unscanned_
 #############################################
 # Link the executable run_tests
 
-build run_tests: CXX_EXECUTABLE_LINKER__run_tests_Debug CMakeFiles/run_tests.dir/tests/test_runner.cpp.o CMakeFiles/run_tests.dir/tests/sample_test.cpp.o CMakeFiles/run_tests.dir/HashMap.cpp.o | lib/libgtest_main.a lib/libgtest.a || lib/libgtest.a lib/libgtest_main.a
+build run_tests: CXX_EXECUTABLE_LINKER__run_tests_Debug CMakeFiles/run_tests.dir/tests/test_runner.cpp.o CMakeFiles/run_tests.dir/tests/tests.cpp.o CMakeFiles/run_tests.dir/HashMap.cpp.o | lib/libgtest_main.a lib/libgtest.a || lib/libgtest.a lib/libgtest_main.a
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk
   LINK_LIBRARIES = lib/libgtest_main.a  lib/libgtest.a
   OBJECT_DIR = CMakeFiles/run_tests.dir
