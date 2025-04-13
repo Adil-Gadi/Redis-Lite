@@ -4,6 +4,7 @@
 
 #ifndef HASHMAP_H
 #define HASHMAP_H
+#include <mutex>
 
 constexpr static int MAX = 1000;
 constexpr static int INIT_SIZE = 2;
@@ -15,6 +16,7 @@ typedef struct HashArray {
     int empty = 0;
 } HashArray;
 
+inline std::mutex map_mtx;
 inline HashArray map[MAX];
 
 void init_map();

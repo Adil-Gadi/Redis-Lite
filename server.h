@@ -4,9 +4,9 @@
 
 #ifndef SERVER_H
 #define SERVER_H
-#include <cstring>
+#include <string>
 #include <mutex>
-
+#include "cstring"
 #include "dequeue.h"
 
 constexpr static int SERVER_PORT = 8080;
@@ -18,12 +18,20 @@ constexpr static int TOKEN_LEN = 8;
 
 inline Dequeue<int> tasks;
 
-inline std::mutex mtx;
+inline std::mutex tasks_mtx;
 inline std::condition_variable cv;
+inline int server_socket;
 inline int working = 0;
 
-void init_server(int (*handler) (const char*, const char*));
-void worker(int id, int (*handler) (const char*, const char*));
-void handle_request(int client, int (*handler) (const char*, const char*));
+struct HandlerResponse {
+    char body[1024];
+    int status;
+};
+
+typedef void (*server_handler) (const char*, const char*, HandlerResponse*);
+
+void init_server(server_handler);
+void worker(int id, server_handler);
+void handle_request(int client, server_handler);
 
 #endif //SERVER_H

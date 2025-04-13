@@ -6,6 +6,7 @@
 
 #include "cstdlib"
 #include "cstring"
+#include "server.h"
 
 void init_map() {
     for (int i = 0; i < MAX; i++) {
@@ -29,6 +30,7 @@ int hash(const char *key) {
 const char *get_item(const char *key) {
     const int index = hash(key);
 
+    std::lock_guard lock(tasks_mtx);
     const HashArray *item = &map[index];
     const int amount = item->amount;
     char **src = item->ptr;
@@ -59,6 +61,7 @@ const char *get_item(const char *key) {
 bool delete_item(const char *key) {
     const int index = hash(key);
 
+    std::lock_guard lock(tasks_mtx);
     HashArray *item = &map[index];
     const int amount = item->amount;
     char **src = item->ptr;
@@ -88,6 +91,7 @@ bool delete_item(const char *key) {
 bool add_item(const char *key, const char *value) {
     const int index = hash(key);
 
+    std::lock_guard lock(map_mtx);
     HashArray *item = &map[index];
     const int amount = item->amount;
 
@@ -132,6 +136,7 @@ bool add_item(const char *key, const char *value) {
 }
 
 bool flush() {
+    std::lock_guard lock(tasks_mtx);
     for (int i = 0; i < MAX; i++) {
         // map[i].amount = 0;
         // map[i].ptr = nullptr;

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <unistd.h>
 
 #include "HashMap.h"
 #include "server.h"
@@ -39,7 +40,7 @@ void extract_params(const std::string &input, int result[3]) {
     result[2] = valueStart;
 }
 
-int handler(const char* auth, const char* body) {
+void handler(const char* auth, const char* body, HandlerResponse* res) {
 
     std::string_view token(auth);
     const std::string input(body);
@@ -57,8 +58,10 @@ int handler(const char* auth, const char* body) {
     extract_params(input, result);
     if (result[0] == -1 || result[1] == -1) {
         LOG("No key provided");
+        res->status = 400;
+        strcpy(res->body, "No key provided");
         // continue;
-        return -1;
+        return;
     }
 
     std::string key = input.substr(result[0], result[1] - result[0] + 1);
@@ -68,19 +71,25 @@ int handler(const char* auth, const char* body) {
         const bool success = add_item(key.c_str(), value.c_str());
 
         if (!success) {
-            LOG("Error: unsuccessful at adding item");
+            // LOG("Error: unsuccessful at adding item");
+            res->status = 500;
+            strcpy(res->body, "Error: unsuccessful at adding item");
 
-            return -1;
+            return;
             // continue;
         }
 
         if (result[2] == -1) {
-            LOG("Error: no associated value provided");
-            return -1;
+            res->status = 400;
+            strcpy(res->body, "Error: no associated value provided");
+            return;
             // continue;
         }
 
-        return 0;
+        res->status = 200;
+        strcpy(res->body, "Success");
+
+        return;
         // continue;
     }
 
@@ -90,12 +99,12 @@ int handler(const char* auth, const char* body) {
         if (value == nullptr) {
             LOG("Error: unable to find value with specified key");
             // continue;
-            return -1;
+            return;
         }
 
         LOG(value);
         // continue;
-        return 0;
+        return;
     }
 
     if (input.starts_with("DELETE") || input.starts_with("REMOVE")) {
@@ -104,25 +113,31 @@ int handler(const char* auth, const char* body) {
         if (!success) {
             LOG("Error: unable to delete item");
             // continue;
-            return -1;
+            return;
         }
 
-        return 0;
+        return;
     }
 
     if (input.starts_with("FLUSH")) {
         flush();
     }
 
-  return 0;
+}
+
+void close_server(int) {
+    flush();
+    close(server_socket);
+    LOG("Closed server successfully");
+    exit(0);
 }
 
 int main() {
     init_map();
 
-    init_server(handler);
+    signal(SIGTERM, close_server);
 
-    flush();
+    init_server(handler);
 
     return 0;
 }
