@@ -5,8 +5,11 @@
 #include "HashMap.h"
 #include "server.h"
 #define LOG(x) std::cout << x << std::endl
+// #define LOG(x) ;
+// static std::string_view authToken("12345678");
+const char* authToken = "12345678";
 
-void extract_params(const std::string &input, int result[3]) {
+void extract_params(const std::string_view &input, int result[3]) {
     int keyStart = -1;
     int keyEnd = -1;
     int spacesIn = 0;
@@ -42,11 +45,18 @@ void extract_params(const std::string &input, int result[3]) {
 
 void handler(const char* auth, const char* body, HandlerResponse* res) {
 
-    std::string_view token(auth);
-    const std::string input(body);
+    const std::string_view token(auth);
+    const std::string_view input(body);
 
-    LOG("Token: " << token.substr(0, 8));
-    LOG("Input: " << input);
+    if (token.substr(0,8) != authToken) {
+        res->status = 400;
+        strcpy(res->body, "Error: Invalid Authentication Token");
+        return;
+    }
+
+    // LOG(token.substr(0, 8).compare("12345678910"));
+    // LOG("Token: " << token.substr(0, 8));
+    // LOG("Input: " << input);
     // std::cout << "> ";
     // std::getline(std::cin, input);
 
@@ -57,15 +67,25 @@ void handler(const char* auth, const char* body, HandlerResponse* res) {
     int result[3];
     extract_params(input, result);
     if (result[0] == -1 || result[1] == -1) {
+
+        if (input.starts_with("FLUSH")) {
+            delete_map();
+            init_map();
+            res->status = 200;
+            strcpy(res->body, "Success");
+            return;
+        }
+
         LOG("No key provided");
         res->status = 400;
         strcpy(res->body, "No key provided");
+
         // continue;
         return;
     }
 
-    std::string key = input.substr(result[0], result[1] - result[0] + 1);
-    std::string value = result[2] == -1 ? "" : input.substr(result[2]);
+    std::string key(input.substr(result[0], result[1] - result[0] + 1));
+    std::string value(result[2] == -1 ? "" : input.substr(result[2]));
     // std::println("{} = {}", key, value);
     if (input.starts_with("ADD")) {
         const bool success = add_item(key.c_str(), value.c_str());
@@ -97,12 +117,17 @@ void handler(const char* auth, const char* body, HandlerResponse* res) {
         const char *value = get_item(key.c_str());
 
         if (value == nullptr) {
-            LOG("Error: unable to find value with specified key");
+            // LOG("Error: unable to find value with specified key");
+            res->status = 400;
+            strcpy(res->body, "Error: unable to find value with specified key");
             // continue;
             return;
         }
 
-        LOG(value);
+        // LOG(value);
+
+        res->status = 200;
+        strcpy(res->body, value);
         // continue;
         return;
     }
@@ -111,22 +136,21 @@ void handler(const char* auth, const char* body, HandlerResponse* res) {
         bool success = delete_item(key.c_str());
 
         if (!success) {
-            LOG("Error: unable to delete item");
+            // LOG("Error: unable to delete item");
+            res->status = 500;
+            strcpy(res->body, "Error: unable to delete item");
             // continue;
             return;
         }
 
-        return;
-    }
-
-    if (input.starts_with("FLUSH")) {
-        flush();
+        res->status = 200;
+        strcpy(res->body, "Success");
     }
 
 }
 
 void close_server(int) {
-    flush();
+    delete_map();
     close(server_socket);
     LOG("Closed server successfully");
     exit(0);

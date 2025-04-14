@@ -13,7 +13,7 @@
 
 #include "server.h"
 
-#define LOG(x) std::cout << x << std::endl
+// #define LOG(x) std::cout << x << std::endl
 
 void init_server(server_handler handler) {
     server_socket = socket(AF_INET, SOCK_STREAM, 0);
@@ -28,6 +28,7 @@ void init_server(server_handler handler) {
     if (success < 0) {
         LOG("Unable to bind");
         close(server_socket);
+        exit(1);
     }
 
     //Initializes workers
@@ -107,7 +108,7 @@ void handle_request(int client, server_handler handler) {
         char request[BUFFER_SIZE] = {0};
         auto request_size = recv(client, &request, BUFFER_SIZE - 1, 0);
         request[request_size] = 0;
-        LOG("Request: " << request_size);
+        // LOG("Request: " << request_size);
 
         if (request_size < 0) {
             // LOG("Recv Failed");
@@ -143,7 +144,7 @@ void handle_request(int client, server_handler handler) {
         handler(token, body, &res);
         res.body[sizeof(res.body) - 1] = 0;
 
-        LOG(res.status << " " << res.body);
+        // LOG(res.status << " " << res.body);
         char response[sizeof(res) + 128];
         snprintf(response, sizeof(response), "HTTP/1.1 %d OK\r\nContent-Type: text/plain\r\n\r\n%s", res.status, res.body);
         send(client, &response, strlen(response), 0);

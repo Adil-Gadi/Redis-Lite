@@ -2,11 +2,11 @@
 // Created by Adil Gadi on 3/30/25.
 //
 
-#include "HashMap.h"
-
 #include "cstdlib"
 #include "cstring"
 #include "server.h"
+
+#include "HashMap.h"
 
 void init_map() {
     for (int i = 0; i < MAX; i++) {
@@ -135,7 +135,7 @@ bool add_item(const char *key, const char *value) {
     return true;
 }
 
-bool flush() {
+bool delete_map() {
     std::lock_guard lock(tasks_mtx);
     for (int i = 0; i < MAX; i++) {
         // map[i].amount = 0;
@@ -156,4 +156,9 @@ bool flush() {
     }
 
     return true;
+}
+
+void flush() {
+    delete_map();
+    init_map();
 }

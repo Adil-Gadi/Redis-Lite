@@ -29,6 +29,6 @@ bool delete_item(const char *key);
 
 bool add_item(const char *key, const char *value);
 
-bool flush();
+bool delete_map();
 
 #endif //HASHMAP_H

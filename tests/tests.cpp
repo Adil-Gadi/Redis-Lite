@@ -40,7 +40,7 @@ TEST(HashMapTest, InitMap) {
 TEST(HashMapTest, Flush) {
     add_item("hello", "world");
 
-    flush();
+    delete_map();
 
     const char* result = get_item("hello");
 
