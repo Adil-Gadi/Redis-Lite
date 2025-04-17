@@ -2,7 +2,7 @@
 // Created by Adil Gadi on 3/30/25.
 //
 #include <gtest/gtest.h>
-#include "../HashMap.h"
+#include "../hashmap.h"
 
 int main(int argc, char **argv) {
     init_map();

@@ -2,7 +2,7 @@
 #include <string>
 #include <unistd.h>
 
-#include "HashMap.h"
+#include "hashmap.h"
 #include "server.h"
 #define LOG(x) std::cout << x << std::endl
 // #define LOG(x) ;

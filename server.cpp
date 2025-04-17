@@ -142,6 +142,7 @@ void handle_request(int client, server_handler handler) {
         res.status = 200;
         res.body[0] = 0;
         handler(token, body, &res);
+        // TODO: reduce body to one copy
         res.body[sizeof(res.body) - 1] = 0;
 
         // LOG(res.status << " " << res.body);

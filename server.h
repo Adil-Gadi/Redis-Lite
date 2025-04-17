@@ -11,7 +11,7 @@
 
 constexpr static int SERVER_PORT = 8080;
 constexpr static int BUFFER_SIZE = 1024;
-const static char* TOKEN_HEADER = "\r\nRedis-Token";
+static auto TOKEN_HEADER = "\r\nRedis-Token";
 const static size_t TOKEN_HEADER_LEN = strlen(TOKEN_HEADER);
 constexpr static int MAX_THREADS = 100;
 constexpr static int TOKEN_LEN = 8;
